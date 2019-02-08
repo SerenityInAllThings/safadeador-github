@@ -1,6 +1,6 @@
 {
-  "name": "git-download-safado",
-  "version": "1.0.0",
+  "name": "safadear-github",
+  "version": "1.0.1",
   "description": "Pacote que permite realizar download de repositórios do GitHub arquivo por arquivo. Importante para burlar segurança.",
   "main": "lib/index.js",
   "scripts": {
