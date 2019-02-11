@@ -3,13 +3,17 @@ import * as request from 'request';
 import * as path from 'path';
 import * as fs from 'fs';
 import * as fsPath from 'fs-Path';
+import * as yargs from 'yargs';
+
+const argv = yargs.argv;
+const proxy = yargv.proxy;
 
 async function main() {
     const args = process.argv;
     const urlRepo = extrairUrlRepo(args);
     if (!urlRepo)
         return -1;
-    
+
     let pastaBase = await recuperarPastaBaseRepo(urlRepo);
     var pastaDestino = await criarPastaDestino(__dirname, urlRepo);
     await baixarArquivos(pastaBase, pastaDestino);
@@ -49,6 +53,9 @@ function requisitarGet(path, absolutePath) {
                 'User-Agent': 'safadeador-github',
             },
         };
+
+        if (proxy)
+            request.defaults({ proxy });
 
         request.get(opcoesRequisicao, (error, response, body) => {
             if (error) {
